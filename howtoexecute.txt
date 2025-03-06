@@ -1,0 +1,2 @@
+cd parsing
+cc *.c -lreadline ../execution/libft.a ../execution/*c 
