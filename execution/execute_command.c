@@ -6,7 +6,7 @@
 /*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:58:19 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/03/06 15:20:30 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:52:21 by mel-mora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,12 @@ int execute_command(t_cmd *cmd, char **envp)
 			execve(path, args, envp);
 		}
 		else
-			printf("Command not found: %s\n", args[0]);\
+		{
+			printf("Command not found: %s\n", args[0]);
+			free(path);
+			free(args);
+			return (0);
+		}
 	}
 	wait(NULL);
 	free(path);

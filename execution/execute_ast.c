@@ -6,7 +6,7 @@
 /*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:34:16 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/03/06 14:10:15 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:50:37 by mel-mora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,47 +14,47 @@
 
 // execute pipe function 
 int execute_pipe(t_ast *left, t_ast *right, char **envp) {
-    // int pipefd[2];
-    // pid_t pid1, pid2;
-    // int status;
+    int pipefd[2];
+    pid_t pid1, pid2;
+    int status;
 
-    // if (pipe(pipefd) == -1) {
-    //     perror("pipe");
-    //     return 1;
-    // }
+    if (pipe(pipefd) == -1) {
+        perror("pipe");
+        return 1;
+    }
 
-    // pid1 = fork();
-    // if (pid1 == -1) {
-    //     perror("fork");
-    //     return 1;
-    // }
+    pid1 = fork();
+    if (pid1 == -1) {
+        perror("fork");
+        return 1;
+    }
 
-    // if (pid1 == 0) {
-    //     close(pipefd[0]);
-    //     dup2(pipefd[1], STDOUT_FILENO);
-    //     close(pipefd[1]);
-    //     execute_ast(left, envp);
-    //     exit(0);
-    // }
+    if (pid1 == 0) {
+        close(pipefd[0]);
+        dup2(pipefd[1], STDOUT_FILENO);
+        close(pipefd[1]);
+        execute_ast(left, envp);
+        exit(0);
+    }
 
-    // pid2 = fork();
-    // if (pid2 == -1) {
-    //     perror("fork");
-    //     return 1;
-    // }
+    pid2 = fork();
+    if (pid2 == -1) {
+        perror("fork");
+        return 1;
+    }
 
-    // if (pid2 == 0) {
-    //     close(pipefd[1]);
-    //     dup2(pipefd[0], STDIN_FILENO);
-    //     close(pipefd[0]);
-    //     execute_ast(right, envp);
-    //     exit(0);
-    // }
+    if (pid2 == 0) {
+        close(pipefd[1]);
+        dup2(pipefd[0], STDIN_FILENO);
+        close(pipefd[0]);
+        execute_ast(right, envp);
+        exit(0);
+    }
 
-    // close(pipefd[0]);
-    // close(pipefd[1]);
-    // waitpid(pid1, &status, 0);
-    // waitpid(pid2, &status, 0);
+    close(pipefd[0]);
+    close(pipefd[1]);
+    waitpid(pid1, &status, 0);
+    waitpid(pid2, &status, 0);
     return 0;
 }
 
@@ -76,7 +76,7 @@ int execute_ast(t_ast *node, char **envp) {
     }
 
     if (node->type == NODE_OR) {
-        if (execute_ast(node->left, envp) != 0)
+        if (execute_ast(node->left, envp) == 0)
             return execute_ast(node->right, envp);
         return 0;
     }
