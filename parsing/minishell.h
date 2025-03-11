@@ -6,7 +6,7 @@
 /*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 21:59:27 by oel-mest          #+#    #+#             */
-/*   Updated: 2025/03/06 14:10:56 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:30:36 by mel-mora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include "../libft/libft.h"
+# include <signal.h>
 
 typedef struct s_output
 {
@@ -116,8 +117,34 @@ void    expand_tokens(t_token *tokens, EnvNode *head);
 
 // mrabt functions
 char	**ft_split(char const *s, char c);
-char *search_command(char *cmd, char **envp);
-int execute_ast(t_ast *node, char **envp);
-int execute_command(t_cmd *cmd, char **envp);
+char *search_command(char *cmd, EnvNode *envp);
+int execute_ast(t_ast *node, EnvNode **envp);
+int execute_command(t_cmd *cmd, EnvNode **envp);
 
+// redirections
+void redirect_output(char *file, int append);
+void redirect_input(char *file);
+void redirect_multiple_outputs(t_output *outputs, int append);
+void handle_heredoc(char *delimiter);
+void prepare_heredocs(t_ast *node);
+
+// builtin
+int is_builtin(char *cmd);
+int run_builtin(char **args, EnvNode **envp, t_cmd *cmd);
+int builtin_echo(char *args);
+int builtin_cd(char **args);
+int builtin_pwd();
+int builtin_export(char **args, EnvNode **envp);
+int builtin_unset(char **args, EnvNode **envp);
+int builtin_env(EnvNode *envp);
+int builtin_exit();
+
+void    minishell(t_ast *root, EnvNode **envp);
+void handle_sigint(int sig);
+void handle_wildcards(t_cmd *cmd);
+
+//oussama functions
+char *expand_env_vars(char *args, EnvNode *env_list);
+char    *handle_lstatus_var();
+int	get_status(void);
 #endif

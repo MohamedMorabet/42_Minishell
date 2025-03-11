@@ -4,7 +4,7 @@ char *read_input(void)
 {
     char *line = NULL;
 
-	line = readline(">>");
+	line = readline("bash-3.2$ ");
     if (!line) {
         free(line);
         return NULL;
@@ -152,6 +152,16 @@ void print_tokens(t_token *tokens) {
     }
 }
 
+
+void handle_sigint(int sig)
+{
+    (void)sig;
+    write(1, "\n", 1);
+    rl_on_new_line(); // Tell readline we moved to a new line
+	rl_replace_line("", 0);
+    rl_redisplay(); 
+}
+
 int main(int argc, char *argv[], char *envp[])
 {
     EnvNode *head = NULL;
@@ -161,21 +171,26 @@ int main(int argc, char *argv[], char *envp[])
         EnvNode *node = create_node(envp[i]);
         add_node(&head, node);
     }
-    printf("Minishell by oussama\n");
+    // colored professional msg for entry point
+    printf("\033[1;32mWelcome to Minishell\033[0m\n");
+    signal(SIGINT, handle_sigint);
+    signal(SIGQUIT, SIG_IGN);
     char *line = read_input();
 	while(line != NULL)
 	{
         add_history(line);
 		t_token *tokens = tokenize(line);
-		print_tokens(tokens);
-        expand_tokens(tokens, head);
-        printf("Expanded version\n");
-        print_tokens(tokens);
+		// print_tokens(tokens);
+        // expand_tokens(tokens, head);
+        // printf("Expanded version\n");
+        // print_tokens(tokens);
 		t_ast *ast = parse(tokens);
 		free_tokens(tokens);
 		free(line);
-		print_ast_tree(ast);
-        execute_ast(ast, envp);
+		// print_ast_tree(ast);
+        minishell(ast, &head);
+        // prepare_heredocs(ast);
+        // execute_ast(ast, envp);
 		free_ast(ast);
 		line = read_input();
 	}

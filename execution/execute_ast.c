@@ -6,14 +6,15 @@
 /*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:34:16 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/03/06 15:50:37 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:31:04 by mel-mora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parsing/minishell.h"
 
 // execute pipe function 
-int execute_pipe(t_ast *left, t_ast *right, char **envp) {
+int execute_pipe(t_ast *left, t_ast *right, EnvNode **envp)
+{
     int pipefd[2];
     pid_t pid1, pid2;
     int status;
@@ -58,25 +59,32 @@ int execute_pipe(t_ast *left, t_ast *right, char **envp) {
     return 0;
 }
 
+void    minishell(t_ast *root, EnvNode **envp)
+{
+    prepare_heredocs(root);
+    execute_ast(root, envp);
+}
 
-int execute_ast(t_ast *node, char **envp) {
+int execute_ast(t_ast *node, EnvNode **envp)
+{
     if (!node)
         return 0;
 
     if (node->type == NODE_COMMAND)
         return (execute_command(node->cmd, envp));
-    
     if (node->type == NODE_PIPE)
         return execute_pipe(node->left, node->right, envp);
 
-    if (node->type == NODE_AND) {
+    if (node->type == NODE_AND)
+    {
         if (execute_ast(node->left, envp) == 0)
             return execute_ast(node->right, envp);
         return 1;
     }
 
-    if (node->type == NODE_OR) {
-        if (execute_ast(node->left, envp) == 0)
+    if (node->type == NODE_OR)
+    {
+        if (execute_ast(node->left, envp) == 1)
             return execute_ast(node->right, envp);
         return 0;
     }

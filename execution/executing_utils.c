@@ -6,7 +6,7 @@
 /*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:35:42 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/03/06 14:00:38 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/03/11 01:07:14 by mel-mora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*join_path(const char *dir, const char *cmd)
 }
 
 // Manual PATH splitting + command search
-char	*search_command(char *cmd, char **envp)
+char	*search_command(char *cmd, EnvNode *envp)
 {
 	// Case 1: Command is already absolute/relative path (contains '/')
 	if (strchr(cmd, '/') != NULL)
@@ -37,7 +37,7 @@ char	*search_command(char *cmd, char **envp)
 	}
 
 	// Case 2: Search PATH
-	char	*path = getenv("PATH");
+	char	*path = ft_getenv("$PATH", envp);
 	if (!path)
 		return (NULL);
 
