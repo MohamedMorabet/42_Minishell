@@ -6,7 +6,7 @@
 /*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:58:19 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/03/11 15:29:12 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:04:23 by mel-mora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,9 @@ int execute_command(t_cmd *cmd, EnvNode **envp)
 	char *path;
 	char **envp_array;
 
+
+    signal(SIGQUIT, SIG_IGN);
+    signal(SIGINT, SIG_IGN);
 	handle_wildcards(cmd);
 	cmd->args = expand_env_vars(cmd->args, *envp);
 	args = ft_split(cmd->args, ' ');

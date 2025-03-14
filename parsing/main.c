@@ -192,6 +192,8 @@ int main(int argc, char *argv[], char *envp[])
         // prepare_heredocs(ast);
         // execute_ast(ast, envp);
 		free_ast(ast);
+        signal(SIGINT, handle_sigint);
+        signal(SIGQUIT, SIG_IGN);
 		line = read_input();
 	}
     return EXIT_SUCCESS;
