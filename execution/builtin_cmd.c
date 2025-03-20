@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:34:21 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/03/11 15:38:00 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:41:19 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing/minishell.h"
+#include "../parsing_v2/minishell.h"
 
 int is_builtin(char *cmd) 
 {
@@ -66,6 +66,7 @@ int builtin_echo(char *args)
     }
     if (newline)
         printf("\n");
+    set_status(0);  
     return 0;
 }
 
@@ -80,8 +81,10 @@ int builtin_cd(char **args)
     if (chdir(args[1]) != 0)
     {
         printf("bash: cd: %s: No such file or directory\n", args[1]);
+        set_status(1);
         return 1;
     }
+    set_status(0);
     return 0;
 }
 
@@ -94,6 +97,7 @@ int builtin_pwd()
         printf("%s\n", cwd);
     else
         perror("minihell: pwd");
+    set_status(0);
     return 0;
 }
 
@@ -138,6 +142,7 @@ int builtin_export(char **args, EnvNode **envp)
         if (eq == NULL)
         {
             printf("minishell: export: `%s': not a valid identifier\n", args[i]);
+            set_status(1);
             return 1;
         }
 
@@ -154,6 +159,7 @@ int builtin_export(char **args, EnvNode **envp)
         {
             printf("minishell: export: `%s': not a valid identifier\n", var_name);
             free(var_name);
+            set_status(1);
             return 1;
         }
 
@@ -180,6 +186,7 @@ int builtin_export(char **args, EnvNode **envp)
 
         free(var_name);
     }
+    set_status(0);
     return 0;
 }
 
@@ -218,7 +225,11 @@ int builtin_unset(char **args, EnvNode **envp)
             tmp = tmp->next;
         }
         if (!tmp)
+        {
             fprintf(stderr, "minishell: unset: `%s': not a valid identifier\n", args[i]);
+            set_status(1);
+            return 1;
+        }
     }
     return 0;
 }

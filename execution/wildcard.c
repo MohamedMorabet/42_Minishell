@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing/minishell.h"
+#include "../parsing_v2/minishell.h"
 
 // Read output of `ls`
 char *get_ls_output()

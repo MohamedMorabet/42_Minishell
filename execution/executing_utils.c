@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing/minishell.h"
+#include "../parsing_v2/minishell.h"
 
 char	*join_path(const char *dir, const char *cmd)
 {

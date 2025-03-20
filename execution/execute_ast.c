@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute_ast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:34:16 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/03/11 15:31:04 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:56:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing/minishell.h"
+#include "../parsing_v2/minishell.h"
 
 // execute pipe function 
 int execute_pipe(t_ast *left, t_ast *right, EnvNode **envp)
@@ -61,17 +61,19 @@ int execute_pipe(t_ast *left, t_ast *right, EnvNode **envp)
 
 void    minishell(t_ast *root, EnvNode **envp)
 {
-    prepare_heredocs(root);
+    prepare_heredocs(root, envp);
+    // printf("here\n");
     execute_ast(root, envp);
 }
 
 int execute_ast(t_ast *node, EnvNode **envp)
 {
     if (!node)
-        return 0;
+        return 1;
 
     if (node->type == NODE_COMMAND)
-        return (execute_command(node->cmd, envp));
+        return execute_command(node->cmd, envp);
+
     if (node->type == NODE_PIPE)
         return execute_pipe(node->left, node->right, envp);
 
@@ -79,7 +81,7 @@ int execute_ast(t_ast *node, EnvNode **envp)
     {
         if (execute_ast(node->left, envp) == 0)
             return execute_ast(node->right, envp);
-        return 1;
+        return 0;
     }
 
     if (node->type == NODE_OR)
@@ -88,5 +90,9 @@ int execute_ast(t_ast *node, EnvNode **envp)
             return execute_ast(node->right, envp);
         return 0;
     }
+
+    if (node->type == NODE_SUB)  // Handle subshell execution
+        return execute_subshell(node, envp);
+
     return 0;
 }
