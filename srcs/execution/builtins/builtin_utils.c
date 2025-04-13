@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:54:57 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/05 16:07:10 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:06:40 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 // export env in our node list (dosnt use strtok) with msg of error
 t_envnode	*find_env_var(t_envnode *envp, const char *var)

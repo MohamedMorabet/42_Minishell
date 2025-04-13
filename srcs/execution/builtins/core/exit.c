@@ -6,12 +6,11 @@
 /*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 18:00:21 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/11 15:29:48 by oel-mest         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:06:28 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
-#include "../../../../includes/execution.h"
 
 // exit (exit shell) with a exit status or exit with 
 // the one from the last command or set status to 1 if 

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   misc_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:36:29 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/12 11:39:15 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:07:38 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 static int	count_env(t_envnode *envp)
 {

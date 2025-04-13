@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 18:02:37 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/05 16:18:04 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:06:25 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
-#include "../../../../includes/execution.h"
 
-// env (print all environment variables)
 int	builtin_env(t_envnode *envp)
 {
 	while (envp)

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   child_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:55:57 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/12 16:22:27 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:06:46 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 static void	handle_empty_path(t_exec_ctx *ctx)
 {

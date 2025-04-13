@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 16:51:14 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/11 17:44:35 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:06:17 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
-#include "../../../../includes/execution.h"
 
 static int	process_n_options(char *args, int start, int *newline)
 {

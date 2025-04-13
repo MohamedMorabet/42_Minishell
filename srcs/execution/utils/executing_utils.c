@@ -6,12 +6,11 @@
 /*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:35:42 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/11 15:56:09 by oel-mest         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:07:24 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 char	*join_path(const char *dir, const char *cmd)
 {

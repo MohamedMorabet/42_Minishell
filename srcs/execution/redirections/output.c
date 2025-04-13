@@ -6,12 +6,11 @@
 /*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 20:15:14 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/11 13:38:43 by oel-mest         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:07:13 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 static int	open_last_output_file(t_output *output_list, int append)
 {

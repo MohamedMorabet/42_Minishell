@@ -6,12 +6,11 @@
 /*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:38:11 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/11 15:40:09 by oel-mest         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:07:42 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 char	*remove_quotess(const char *str)
 {

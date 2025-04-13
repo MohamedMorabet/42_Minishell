@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:59:13 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/03/25 19:58:24 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:06:33 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
-#include "../../../../includes/execution.h"
 
 // pwd (print working directory)
 int	builtin_pwd(void)

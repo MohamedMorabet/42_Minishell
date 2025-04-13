@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:59:38 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/03 22:50:25 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:06:30 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
-#include "../../../../includes/execution.h"
 
 static int	process_export_arg_eq(char *arg, t_envnode **envp)
 {

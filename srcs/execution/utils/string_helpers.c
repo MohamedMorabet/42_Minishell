@@ -6,12 +6,11 @@
 /*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:39:42 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/11 15:57:35 by oel-mest         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:07:45 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 static int	find_matching_quote(char *input, int i, char quote)
 {

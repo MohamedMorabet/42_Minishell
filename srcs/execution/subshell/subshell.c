@@ -6,12 +6,11 @@
 /*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:58:19 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/11 16:15:57 by oel-mest         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:07:17 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 /**
  * Executes a local executable file if it exists and is executable.

@@ -6,12 +6,11 @@
 /*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 16:18:40 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/11 15:56:46 by oel-mest         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:06:58 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 static int	count_words(char const *s, char c)
 {

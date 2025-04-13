@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 01:39:52 by oel-mest          #+#    #+#             */
-/*   Updated: 2025/04/12 17:13:58 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:33:16 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@ char	*read_input(t_envnode *envp)
 	char	*line;
 
 	line = NULL;
-	line = readline("\033[1;32mHHHH$ \033[0m");
+	line = readline("\001\033[1;32m\002HHHH$ \001\033[0m\002");
 	if (!line)
 	{
-		free(line);
 		free_env_list(envp);
 		return (NULL);
 	}

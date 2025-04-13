@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute_ast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:34:16 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/10 20:38:45 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:06:01 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 void	minishell(t_ast *root, t_envnode **envp)
 {

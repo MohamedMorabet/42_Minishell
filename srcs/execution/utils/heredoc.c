@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:35:41 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/11 17:51:04 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:07:30 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 void	collect_heredoc(t_cmd *cmd, t_envnode **envp)
 {

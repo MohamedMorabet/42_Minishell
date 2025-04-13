@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   context_management.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:22:12 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/12 16:22:02 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:06:50 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 static int	handle_no_args(t_exec_ctx *ctx)
 {

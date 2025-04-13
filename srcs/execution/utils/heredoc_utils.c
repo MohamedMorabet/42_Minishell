@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 22:37:24 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/11 17:47:38 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:07:26 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 //tmp[20] Enough to hold any int value 
 static void	generate_filename(char *dest, size_t size, int count)

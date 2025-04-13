@@ -1,8 +1,20 @@
+# Color variables for output
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+RED = \033[0;31m
+RESET = \033[0m
+CYAN = \033[0;36m
+
+# Brew and Readline 
+USERNAME := $(USER)
+BREW_DIR := /goinfre/$(USERNAME)/homebrew
+BREW_BIN := $(BREW_DIR)/bin/brew
+READLINE_PREFIX := $(BREW_DIR)/opt/readline
+
 # Compiler and flags
-CC = cc -Wall -Wextra -Werror -fsanitize=address -g
-CFLAGS = -I/goinfre/$(USER)/homebrew/opt/readline/include
-INCLUDES = -I includes
-LDFLAGS = -L/goinfre/$(USER)/homebrew/opt/readline/lib -lreadline
+CC = cc -Wall -Wextra -Werror -MMD -MP
+INCLUDES = -Iincludes -I$(READLINE_PREFIX)/include
+LDFLAGS = -L$(READLINE_PREFIX)/lib -lreadline
 LIBFTT = -L $(SRCS_DIR)/libft -lft
 
 # Directories
@@ -37,7 +49,6 @@ SRCS = $(SRCS_DIR)/main.c \
        $(SRCS_DIR)/execution/utils/executing_utils.c \
        $(SRCS_DIR)/execution/redirections/output.c \
        $(SRCS_DIR)/execution/redirections/input.c \
-       $(SRCS_DIR)/execution/redirections/heredoc.c \
        $(SRCS_DIR)/execution/redirections/ambiguous.c \
        $(SRCS_DIR)/execution/redirections/ambuguous_utils.c \
        $(SRCS_DIR)/execution/exec_command/command.c \
@@ -67,23 +78,26 @@ SRCS = $(SRCS_DIR)/main.c \
        $(SRCS_DIR)/execution/ast/execute_ast.c \
        $(SRCS_DIR)/execution/ast/execute_ast_utils.c \
        $(SRCS_DIR)/get_next_line/get_next_line.c \
-       $(SRCS_DIR)/get_next_line/get_next_line_utils.c 
-
+       $(SRCS_DIR)/get_next_line/get_next_line_utils.c
 # Object files
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 
 # Executable name
 NAME = minishell
 
-# Color variables for output
-GREEN = \033[0;32m
-YELLOW = \033[0;33m
-RED = \033[0;31m
-RESET = \033[0m
-CYAN = \033[0;36m
-
 # Default target
 all: $(LIBFT) $(NAME)
+
+readline:
+	@echo "📦 Setting up Homebrew in $(BREW_DIR)"
+	@if [ ! -d "$(BREW_DIR)" ]; then \
+		git clone https://github.com/Homebrew/brew $(BREW_DIR); \
+	fi
+	@echo "🍺 Installing readline..."
+	@eval "$$($(BREW_BIN) shellenv)" && \
+		brew update && \
+		brew install readline
+	@echo "✅ readline installed at $(READLINE_PREFIX)"
 
 $(LIBFT):
 	@echo "$(CYAN)[LIBFT]$(RESET) Building libft..."
@@ -92,14 +106,17 @@ $(LIBFT):
 # Rule to compile the executable
 $(NAME): $(OBJS)
 	@echo "$(CYAN)[EXEC]$(RESET) Linking $(NAME)..."
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFTT) -o $(NAME) $(LDFLAGS)
+	@$(CC) $(INCLUDES) $(OBJS) $(LIBFTT) -o $(NAME) $(LDFLAGS)
 	@echo "$(GREEN)[SUCCESS]$(RESET) $(NAME) built successfully."
 
 # Rule to compile object files
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@echo "$(YELLOW)[OBJ]$(RESET) Compiling $@..."
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(INCLUDES) -c $< -o $@
+
+# For depe
+-include $(OBJS:.o=.d)
 
 # Clean rule
 clean:
@@ -116,18 +133,6 @@ fclean: clean
 
 # Rebuild rule
 re: fclean all
-# norminette checker
-norm:
-	@echo "Checking norminette..."
-	@norminette > .norm_output_tmp 2>&1; \
-	if grep -q "Error" .norm_output_tmp; then \
-		echo "$${RED}FAILED$${RESET}"; \
-	else \
-		echo "$${GREEN}OK$${RESET}"; \
-	fi; \
-	rm -f .norm_output_tmp
 
-run:
-	@./$(NAME)
 # Phony targets
 .PHONY: all clean fclean re run norm

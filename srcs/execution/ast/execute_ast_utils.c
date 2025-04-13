@@ -6,12 +6,11 @@
 /*   By: oel-mest <oel-mest@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:04:17 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/04/11 15:42:22 by oel-mest         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:06:00 by oel-mest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-#include "../../../includes/execution.h"
 
 int	exec_command_node(t_ast *node, t_envnode **envp)
 {
