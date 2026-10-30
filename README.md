@@ -1,5 +1,9 @@
+<p align="center">
+  <img src="assets/banner.png"
+       alt="Project Banner"
+       width="100%">
+</p>
 # Minishell
-
 **A Bash-inspired Unix shell built in C, from command parsing to process execution.**
 
 Minishell is a systems programming project developed as part of the **1337 / 42 Network** curriculum. It recreates the essential behavior of a Unix command-line shell, with a focus on parsing, process control, inter-process communication, file descriptors, and signal handling.
